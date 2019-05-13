@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+
+<head th:replace="layout :: common_header(~{::title},~{})">
+    <title>Users</title>
+</head>
+
+<body th:replace="layout :: common_body(~{::main},~{})">
+
+<main>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>partner</th>
+            <th>name</th>
+            <th>phone</th>
+            <th>description</th>
+            <th>lien</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="garage : ${garages}">
+            <td th:text="${garage.partner}"></td>
+            <td th:text="${garage.name}"></td>
+            <td th:text="${garage.phone}"></td>
+            <td th:text="${garage.description}"></td>
+            <td><a class="btn btn-primary btn-xs" th:href="@{'/garage/' + ${garage.id}}">voir</a></td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+
+</body>
+</html>

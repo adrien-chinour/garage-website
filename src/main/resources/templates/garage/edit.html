@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+
+<head th:replace="layout :: common_header(~{::title},~{})">
+    <title>Users</title>
+</head>
+
+<body th:replace="layout :: common_body(~{::main},~{})">
+
+<main>
+    <div th:replace="garage/form (action='/garage/edit')"></div>
+</main>
+
+</body>
+</html>

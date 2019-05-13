@@ -1,4 +1,4 @@
-package main.java;
+package frontend.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
