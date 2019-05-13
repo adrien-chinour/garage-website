@@ -1,5 +1,6 @@
 package frontend.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import frontend.api.GarageApi;
 import frontend.model.Garage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,12 +43,14 @@ public class GarageController {
     }
 
     @PostMapping("/garage/add")
-    public String post(@ModelAttribute Garage garage) {
+    public String post(@ModelAttribute Garage garage) throws JsonProcessingException {
+        garageApi.create(garage);
         return "redirect:/garage";
     }
 
     @PostMapping("/garage/edit")
-    public String put(@ModelAttribute Garage garage) {
-        return "redirect:/garage";
+    public String put(@ModelAttribute Garage garage) throws JsonProcessingException {
+        garageApi.edit(garage);
+        return "redirect:/garage" + garage.getId();
     }
 }

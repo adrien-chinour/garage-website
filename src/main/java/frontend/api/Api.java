@@ -1,5 +1,7 @@
 package frontend.api;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+
 /**
  * Interface to implement for interact with a REST API resource.
  */
@@ -23,14 +25,14 @@ interface Api<T> {
      * @param entity : element to create
      * @return the element
      */
-    T create(T entity);
+    T create(T entity) throws JsonProcessingException;
 
     /**
      * Edit an element
-     * @param id : id of the element
+     * @param entity : element tu update
      * @return the element
      */
-    T edit(int id);
+    T edit(T entity) throws JsonProcessingException;
 
     /**
      * Delete an element
