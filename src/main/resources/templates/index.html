@@ -1,11 +1,12 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" lang="fr">
 
-<head th:replace="layout :: common_header(~{::title},~{})">
+<head th:replace="layout :: common_header(~{::title},~{::link})">
     <title>Index</title>
+    <link href="../css/home.css">
 </head>
 
-<body th:replace="layout :: common_body(~{::main},~{})">
+<body th:replace="layout :: common_body(~{::main},~{::script})">
 
 <main>
     <h1 th:text="'Hello, ' + ${name} + '!'"/>
