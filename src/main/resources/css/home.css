@@ -2,15 +2,6 @@
 body{ background-image: url(/img/home_garage.jpg);
     background-size: cover ;
 }
-/* NAVBAR*/
-
-#navbarsExampleDefault img {width: 300px;height: auto;}
-#navbarsExampleDefault ul { margin-left:35%;}
-#navbarsExampleDefault li {margin-top: 3%;}
-#navbarsExampleDefault button {background-color:transparent; margin-right: 10px;color:white;}
-i.fa.fa-wrench {padding-right:10px;}
-
-
 /* FORM SEARCH*/
 .search-sec{
     margin-top : 20%;

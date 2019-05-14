@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title th:replace="${title}">Garage</title>
-    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/home.css}">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/header.css}">
 
     <!-- bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -18,9 +18,7 @@
 </head>
 
 <body th:fragment="common_body(main,scripts)">
-
 <div th:replace="fragments/header_home"></div>
-<div th:replace="fragments/search_bar"></div>
 
 <th:block th:replace="${main}"/>
 
