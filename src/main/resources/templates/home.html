@@ -1,15 +1,14 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" lang="fr">
-<head th:replace="layout_home :: common_header(~{::title},~{::link})">
+<head th:replace="layout :: common_header(~{::title},~{::link})">
     <title>Garage Corner</title>
-    <link href="/css/home.css">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/home.css}">
 </head>
 
-<body th:replace="layout_home :: common_body(~{::main},~{})" >
+<body th:replace="layout :: common_body(~{::main},~{})" >
 
 <main>
     <div th:replace="fragments/search_bar"></div>
-
 </main>
 
 </body>
