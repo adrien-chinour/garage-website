@@ -39,16 +39,38 @@
                 <div class="card" >
                     <div class="card-body">
                         <h5 class="card-title" id="card-title2">Notes et avis</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" >Site internet</a>
-                        <a href="#" >Adresse mail</a>
+                        <div id="rating">
+                            <h4 class="card-title" id="number_moy_rating">2</h4>
+                            <span class="fa fa-circle-o" id="1"></span>
+                            <span class="fa fa-circle-o" id="2"></span>
+                            <span class="fa fa-circle-o" id="3"></span>
+                            <span class="fa fa-circle-o" id="4"></span>
+                            <span class="fa fa-circle-o" id="5"></span>
+                            <h6 class="card-subtitle" id="number_total_rating"> 12 avis</h6>
+
+                            <script>
+                                var MyH4 = document.getElementById("number_moy_rating");
+                                var number=1;
+                                if(   MyH4==1)
+                                    document.getElementById("1").className = "fa fa-dot-circle-o";
+                                if(   MyH4==2){
+                                    document.getElementById("1").className = "fa fa-dot-circle-o";
+                                document.getElementById("2").className = "fa fa-dot-circle-o";
+                                }
+
+                            </script>
+                        </div>
+                        <div id="link">
+                            <i class="fa fa-envelope fa-2x" aria-hidden="true"></i> <a href="#" >Site internet</a><br>
+                            <i class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></i> <a href="#" >Adresse mail</a>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-sm-6" id="card3">
                 <div class="card" >
                     <div class="card-body" >
-                        <h5 class="card-title">Détails</h5>
+                        <h5 class="card-title" id="card-title3">Détails</h5>
                         <h5 class="card-subtitle" id="card-subtitle-title2">Fourchette de prix</h5>
                         <p >Prix </p>
                         <h5 class="card-subtitle" id="card-subtitle-title3">Description</h5>
