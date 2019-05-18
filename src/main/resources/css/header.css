@@ -4,6 +4,7 @@
     height:180px;
     background-color: #393B3A;
     display:block;
+    position:fixed;
 }
 
 #navbarsExampleDefault img {width: 200px;height: auto;margin-top: 6%;}

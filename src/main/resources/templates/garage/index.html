@@ -12,9 +12,11 @@
         <div class="card-body">
             <a class="card-title" th:text="${garage.partner}" th:href="@{'/garage/' + ${garage.id}}" ></a>
             <h6 class="card-subtitle mb-2 text-muted" th:text="${garage.address.city}"></h6>
-            <p class="card-text" th:text="${garage.getAddress().address}"> </p>
-            <p class="card-text" th:text="${garage.getAddress().city}"> </p>
-            <p class="card-text" th:text="${garage.getAddress().country}"> </p>
+            <div id="address_desc">
+                <p class="card-text" th:text="${garage.getAddress().address}"> </p>
+                <p class="card-text" th:text="${garage.getAddress().city}"> </p>
+                <p class="card-text" th:text="${garage.getAddress().country}"> </p>
+            </div>
             <a href="#" class="btn btn-primary" id="btn_call" th:text="${garage.phone}"></a>
             <a href="#"  class="btn btn-primary" id="btn_opinion">Ecrire un avis</a>
         </div>

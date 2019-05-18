@@ -1,14 +1,37 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" lang="fr">
 
-<head th:replace="layout :: common_header(~{::title},~{})">
+<head th:replace="layout :: common_header(~{::title},~{::link})">
     <title th:text="${garage.name}"></title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/../css/garage_show.css}">
 </head>
 
 <body th:replace="layout :: common_body(~{::main},~{})">
 
 <main>
-    <h1 th:text="${garage.name}"></h1>
+    <div class="card">
+        <div class="card-body">
+            <div class="card-body-dec">
+                <h4 class="card-title" th:text="${garage.name}"></h4>
+                <h6 class="card-subtitle mb-2 text-muted" th:text="${garage.address.city}"></h6>
+                <div id="address_icon"> <i class="fa fa-map-marker fa-3x"></i>
+                    <div id="address_desc">
+                        <p class="card-text" th:text="${garage.getAddress().address}"> </p>
+                        <p class="card-text" th:text="${garage.getAddress().city}"> </p>
+                        <p class="card-text" th:text="${garage.getAddress().country}"> </p>
+                    </div>
+                </div>
+            </div>
+            <div id="button_desc">
+                <a href="#" class="btn btn-primary" id="btn_call" th:text="${garage.phone}"></a>
+                <a href="#"  class="btn btn-primary" id="btn_opinion">Ecrire un avis</a>
+            </div>
+            <div id="img_garage" >
+                <img class="card-img-right" src="/../../img/example_img_garage.jpg" alt="Card image cap">
+                <img class="card-img-right" src="/../../img/example_img_garage.jpg" alt="Card image cap">
+            </div>
+        </div>
+    </div>
 </main>
 
 </body>
