@@ -9,26 +9,52 @@
 <body th:replace="layout :: common_body(~{::main},~{})">
 
 <main>
-    <div class="card">
-        <div class="card-body">
-            <div class="card-body-dec">
-                <h4 class="card-title" th:text="${garage.name}"></h4>
-                <h6 class="card-subtitle mb-2 text-muted" th:text="${garage.address.city}"></h6>
-                <div id="address_icon"> <i class="fa fa-map-marker fa-3x"></i>
-                    <div id="address_desc">
-                        <p class="card-text" th:text="${garage.getAddress().address}"> </p>
-                        <p class="card-text" th:text="${garage.getAddress().city}"> </p>
-                        <p class="card-text" th:text="${garage.getAddress().country}"> </p>
+    <div id="global">
+        <div class="card"  id="card1">
+            <div class="card-body" id="card-body1">
+                <div class="card-body-dec">
+                    <h4 class="card-title" th:text="${garage.name}"></h4>
+                    <h6 class="card-subtitle mb-2 text-muted" th:text="${garage.address.city}"></h6>
+                    <div id="address_icon"> <i class="fa fa-map-marker fa-3x"></i>
+                        <div id="address_desc">
+                            <p class="card-text" th:text="${garage.getAddress().address}"> </p>
+                            <p class="card-text" th:text="${garage.getAddress().city}"> </p>
+                            <p class="card-text" th:text="${garage.getAddress().country}"> </p>
+                        </div>
+                    </div>
+                </div>
+                <div id="button_desc">
+                    <i class="fa fa-phone fa-3x"></i>
+                    <a href="#" class="btn btn-primary" id="btn_call" th:text="${garage.phone}"></a>
+                    <a href="#"  class="btn btn-primary" id="btn_opinion">Ecrire un avis</a>
+                </div>
+                <div id="img_garage" >
+                    <img class="card-img-right" src="/../../img/example_img_garage.jpg" alt="Card image cap">
+                    <img class="card-img-right" src="/../../img/example_img_garage.jpg" alt="Card image cap">
+                </div>
+            </div>
+        </div>
+        <div class="row" id="row1">
+            <div class="col-sm-6" id="card2">
+                <div class="card" >
+                    <div class="card-body">
+                        <h5 class="card-title" id="card-title2">Notes et avis</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <a href="#" >Site internet</a>
+                        <a href="#" >Adresse mail</a>
                     </div>
                 </div>
             </div>
-            <div id="button_desc">
-                <a href="#" class="btn btn-primary" id="btn_call" th:text="${garage.phone}"></a>
-                <a href="#"  class="btn btn-primary" id="btn_opinion">Ecrire un avis</a>
-            </div>
-            <div id="img_garage" >
-                <img class="card-img-right" src="/../../img/example_img_garage.jpg" alt="Card image cap">
-                <img class="card-img-right" src="/../../img/example_img_garage.jpg" alt="Card image cap">
+            <div class="col-sm-6" id="card3">
+                <div class="card" >
+                    <div class="card-body" >
+                        <h5 class="card-title">Détails</h5>
+                        <h5 class="card-subtitle" id="card-subtitle-title2">Fourchette de prix</h5>
+                        <p >Prix </p>
+                        <h5 class="card-subtitle" id="card-subtitle-title3">Description</h5>
+                        <p class="card-text" th:text="${garage.description}"> </p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

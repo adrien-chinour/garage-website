@@ -6,9 +6,8 @@ body{background-image: url(/img/background.jpg);
 
 /*Card Garage*/
 .card {
-    margin-top:5%;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
+    margin-top:200px;
+    left:10%;
     position:absolute;
     width:80%;
     height:auto;
