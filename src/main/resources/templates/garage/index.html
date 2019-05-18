@@ -1,33 +1,27 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" lang="fr">
-
-<head th:replace="layout :: common_header(~{::title},~{})">
-    <title>Users</title>
+<head th:replace="layout :: common_header(~{::title},~{::link})">
+    <title>Garages</title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/../css/garage_index.css}">
 </head>
 
 <body th:replace="layout :: common_body(~{::main},~{})">
 
 <main>
-    <table class="table table-bordered">
-        <thead>
-        <tr>
-            <th>partner</th>
-            <th>name</th>
-            <th>phone</th>
-            <th>description</th>
-            <th>lien</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="garage : ${garages}">
-            <td th:text="${garage.partner}"></td>
-            <td th:text="${garage.name}"></td>
-            <td th:text="${garage.phone}"></td>
-            <td th:text="${garage.description}"></td>
-            <td><a class="btn btn-primary btn-xs" th:href="@{'/garage/' + ${garage.id}}">voir</a></td>
-        </tr>
-        </tbody>
-    </table>
+    <div class="card" th:each="garage : ${garages}" >
+        <div class="card-body">
+            <a class="card-title" th:text="${garage.partner}" th:href="@{'/garage/' + ${garage.id}}" ></a>
+            <h6 class="card-subtitle mb-2 text-muted" th:text="${garage.address.city}"></h6>
+            <p class="card-text" th:text="${garage.getAddress().address}"> </p>
+            <p class="card-text" th:text="${garage.getAddress().city}"> </p>
+            <p class="card-text" th:text="${garage.getAddress().country}"> </p>
+            <a href="#" class="btn btn-primary" id="btn_call" th:text="${garage.phone}"></a>
+            <a href="#"  class="btn btn-primary" id="btn_opinion">Ecrire un avis</a>
+        </div>
+        <div id="img_garage" >
+            <img class="card-img-right" src="/../../img/example_img_garage.jpg" alt="Card image cap">
+        </div>
+    </div>
 </main>
 
 </body>

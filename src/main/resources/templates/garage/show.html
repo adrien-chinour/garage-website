@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="fr">
 
 <head th:replace="layout :: common_header(~{::title},~{})">
-    <title>Users</title>
+    <title th:text="${garage.name}"></title>
 </head>
 
 <body th:replace="layout :: common_body(~{::main},~{})">

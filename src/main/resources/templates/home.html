@@ -1,15 +1,35 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" lang="fr">
-<head th:replace="layout :: common_header(~{::title},~{::link})">
+<head>
     <title>Garage Corner</title>
-    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/home.css}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}"/>
+    <!-- bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <!-- bootstrap icon -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
-<body th:replace="layout :: common_body(~{::main},~{})" >
-
 <main>
-    <div th:replace="fragments/search_bar"></div>
+    <nav class="navbar navbar-expand-md fixed-top">
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault" >
+            <div>
+                <img src="../../img/logo_garage.jpg"  />
+            </div>
+            <ul class="navbar-nav ">
+                <li> <button type="button" class="btn btn-light">  <i class="fa fa-wrench" aria-hidden="true"></i>Vous êtes un professionnel automobile ? </button>
+                    <button type="button" class="btn" ><i class="fa fa-question-circle-o fa-2x" aria-hidden="true"></i>
+                        Besoin d'Aide ? </button>
+                    <button type="button" class="btn"><i class="fa fa-user-o fa-2x" aria-hidden="true"></i>
+                        Mon compte</button>
+                </li>
+            </ul>
+        </div>
+    </nav>
 </main>
-
+<div th:replace="fragments/search_bar"></div>
 </body>
 </html>
