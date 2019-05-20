@@ -1,64 +1,84 @@
 /*Navbar*/
-.navbar.navbar-expand-md.fixed-top{
-    width : 100%;
-    height:180px;
+.navbar.navbar-expand-md.fixed-top {
+    width: 100%;
+    height: 180px;
     background-color: #393B3A;
-    display:block;
-    position:fixed;
+    display: block;
+    position: fixed;
 }
 
-#navbarsExampleDefault img {width: 200px;height: auto;margin-top: 6%;}
-#navbarsExampleDefault li {position: absolute;right: 3%;top: 6%;}
-#navbarsExampleDefault button {font-size:15px;background-color:transparent; margin-right: 10px;color:white;}
-i.fa.fa-wrench {padding-right:10px;}
+#navbarsExampleDefault img {
+    width: 200px;
+    height: auto;
+    margin-top: 6%;
+}
+
+#navbarsExampleDefault li {
+    position: absolute;
+    right: 3%;
+    top: 6%;
+}
+
+#navbarsExampleDefault button {
+    font-size: 15px;
+    background-color: transparent;
+    margin-right: 10px;
+    color: white;
+}
+
+i.fa.fa-wrench {
+    padding-right: 10px;
+}
 
 /* FORM SEARCH*/
-.row{
-    margin-top:7px;
-    width:120%;
-    margin-left:-10px;
+#form-search {
+    margin-top: 7px;
+    width: 120%;
+    margin-left: -10px;
 }
 
 /*INPUT*/
-.row input{
-    height:45px;
+#form-search input {
+    height: 45px;
     background: rgba(255, 255, 255, 0.93);
-    font-size:18px;
+    font-size: 18px;
     text-indent: 28px;
 }
 
 /*BUTTON*/
-.row button {
-    width:400px;
-    Height:45px;
+#form-search button {
+    width: 400px;
+    Height: 45px;
     background: rgba(251, 34, 34, 0.70);
     border: none;
     font-weight: 400;
-    font-size:20px;
+    font-size: 20px;
 }
 
 /*ICONS*/
 .col-lg-3.col-lg-3.col-lg-40.p-0 {
-    position:relative;
+    position: relative;
 }
 
 .col-lg-3.col-lg-3.col-lg-40.p-0 i {
-    position:absolute;
+    position: absolute;
 }
 
-.fa.fa-search.fa-1x{
-    top: 17%; left: 3%;
+.fa.fa-search.fa-1x {
+    top: 17%;
+    left: 3%;
     color: rgba(251, 34, 34, 0.80);
-    font-size:25px;
+    font-size: 25px;
 }
 
-.fa.fa-map-marker.fa-2x{
-    top: 17%; left: 3%;
+.fa.fa-map-marker.fa-2x {
+    top: 17%;
+    left: 3%;
     color: rgba(251, 34, 34, 0.80);
 }
 
-.fa-flag-checkered.fa-1x{
-    color:white;
-    padding-left:12px;
-    padding-top:7px;
+.fa-flag-checkered.fa-1x {
+    color: white;
+    padding-left: 12px;
+    padding-top: 7px;
 }

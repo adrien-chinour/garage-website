@@ -1,6 +1,0 @@
-<div xmlns:th="http://www.thymeleaf.org" th:fragment="garage/form (action)">
-    <form action="#" th:action="@{${action}}" th:object="${user}" method="post">
-        <p>Name: <input type="text" th:field="*{name}"/></p>
-        <p><input type="submit" value="Submit"/> <input type="reset" value="Reset"/></p>
-    </form>
-</div>

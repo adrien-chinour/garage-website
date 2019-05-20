@@ -5,31 +5,33 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import frontend.model.Garage;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
 public class GarageApi implements Api<Garage> {
 
-    private static final String url = "http://virtserver.swaggerhub.com/web-well/garageAPI/1.0.0/garages";
+    private String url;
 
     @Autowired
     private ApiService apiService;
 
     private ObjectMapper mapper;
 
-    public GarageApi() {
+    public GarageApi(@Value("${api.baseUrl}") String url) {
         this.mapper = new ObjectMapper();
+        this.url = url + "/garages";
     }
 
     @Override
     public Garage[] getAll() {
-        return mapper.convertValue(apiService.getList(url), new TypeReference<Garage[]>() {
+        return mapper.convertValue(apiService.getList(url, null), new TypeReference<Garage[]>() {
         });
     }
 
     @Override
     public Garage get(int id) {
-        return mapper.convertValue(apiService.get(url + '/' + id), new TypeReference<Garage>() {
+        return mapper.convertValue(apiService.get(url + '/' + id, null), new TypeReference<Garage>() {
         });
     }
 

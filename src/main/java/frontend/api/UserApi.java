@@ -5,32 +5,46 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import frontend.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Component
 public class UserApi implements Api<User> {
 
-    private static final String url = "http://virtserver.swaggerhub.com/web-well/garageAPI/1.0.0/users";
+    private String url;
 
     @Autowired
     private ApiService apiService;
 
     private ObjectMapper mapper;
 
-    public UserApi() {
+    public UserApi(@Value("${api.baseUrl}") String url) {
         this.mapper = new ObjectMapper();
+        this.url = url + "/users";
     }
 
     @Override
     public User[] getAll() {
-        return mapper.convertValue(apiService.getList(url), new TypeReference<User[]>() {
+        return mapper.convertValue(apiService.getList(url, null), new TypeReference<User[]>() {
         });
     }
 
     @Override
     public User get(int id) {
-        return mapper.convertValue(apiService.get(url + '/' + id), new TypeReference<User>() {
+        return mapper.convertValue(apiService.get(url + '/' + id, null), new TypeReference<User>() {
         });
+    }
+
+    public User getByUsername(String username) {
+        Map<String, String> params = new HashMap<>();
+        params.put("username", username);
+        User[] users = mapper.convertValue(apiService.get(url, params), new TypeReference<User[]>() {
+        });
+
+        return users.length == 1 ? users[0] : null;
     }
 
     @Override
