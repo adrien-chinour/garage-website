@@ -20,11 +20,11 @@ public class GarageController {
     @GetMapping("/garage")
     public String list(Model model,
                        @RequestParam(required = false) String name,
-                       @RequestParam(required = false) String adresse) {
+                       @RequestParam(required = false) String adress) {
 
         Map<String,String> filters = new HashMap<>();
         filters.put("name", name);
-        filters.put("adresse", adresse);
+        filters.put("adress", adress);
 
         model.addAttribute("garages", garageApi.get(filters));
         return "garage/index";
