@@ -39,25 +39,20 @@
                 <div class="card" >
                     <div class="card-body">
                         <h5 class="card-title" id="card-title2">Notes et avis</h5>
-                        <div id="rating">
-                            <h4 class="card-title" id="number_moy_rating">2</h4>
+                        <div class="rating" id="rating1">
+                            <h4 class="card-title" id="number_moy_rating">4</h4>
                             <span class="fa fa-circle-o" id="1"></span>
                             <span class="fa fa-circle-o" id="2"></span>
                             <span class="fa fa-circle-o" id="3"></span>
                             <span class="fa fa-circle-o" id="4"></span>
                             <span class="fa fa-circle-o" id="5"></span>
                             <h6 class="card-subtitle" id="number_total_rating"> 12 avis</h6>
-
                             <script>
-                                var MyH4 = document.getElementById("number_moy_rating");
-                                var number=1;
-                                if(   MyH4==1)
-                                    document.getElementById("1").className = "fa fa-dot-circle-o";
-                                if(   MyH4==2){
-                                    document.getElementById("1").className = "fa fa-dot-circle-o";
-                                document.getElementById("2").className = "fa fa-dot-circle-o";
+                                var MyH4 = document.getElementById("number_moy_rating").innerHTML;
+                                for(var i=1;i<=MyH4;i++)
+                                {
+                                    document.getElementById(i.toString()).className = "fa fa-dot-circle-o";
                                 }
-
                             </script>
                         </div>
                         <div id="link">
@@ -75,6 +70,97 @@
                         <p >Prix </p>
                         <h5 class="card-subtitle" id="card-subtitle-title3">Description</h5>
                         <p class="card-text" th:text="${garage.description}"> </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card"  id="card4">
+            <div class="card-body" id="card-body4">
+                <div class="card-body" id="title-comment">
+                    <h5 class="card-title" id="card-title2">Avis (12)</h5>
+                    <i class="fa fa-question-circle fa-2x"></i> <h6 class="card-subtitle mb-2 text-muted" id="subtitle-comment"> Contrôle des avis</h6>
+                </div>
+                <div class="card-body" id="title-comment2">
+                    <h5 class="card-title" id="card-title4">Note attribuée</h5>
+                    <div class="row" id="row_rating">
+                        <div class="side">
+                            <div id="side_div">Excellent</div>
+                        </div>
+                        <div class="middle">
+                            <div class="bar-container">
+                                <div class="bar-5"></div>
+                            </div>
+                        </div>
+                        <div class="side right">
+                            <div>5</div>
+                        </div>
+                        <div class="side">
+                            <div id="side_div">Très bien</div>
+                        </div>
+                        <div class="middle">
+                            <div class="bar-container">
+                                <div class="bar-4"></div>
+                            </div>
+                        </div>
+                        <div class="side right">
+                            <div>4</div>
+                        </div>
+                        <div class="side">
+                            <div id="side_div">?</div>
+                        </div>
+                        <div class="middle">
+                            <div class="bar-container">
+                                <div class="bar-3"></div>
+                            </div>
+                        </div>
+                        <div class="side right">
+                            <div>3</div>
+                        </div>
+                        <div class="side">
+                            <div id="side_div">Moyen</div>
+                        </div>
+                        <div class="middle">
+                            <div class="bar-container">
+                                <div class="bar-2"></div>
+                            </div>
+                        </div>
+                        <div class="side right">
+                            <div>2</div>
+                        </div>
+                        <div class="side">
+                            <div id="side_div">Médiocre</div>
+                        </div>
+                        <div class="middle">
+                            <div class="bar-container">
+                                <div class="bar-1"></div>
+                            </div>
+                        </div>
+                        <div class="side right">
+                            <div>1</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body" id="card-body5">
+                <div></div>
+                </div>
+                <div id="button_desc4">
+                    <div class="rating" id="rating2">
+                        <h4 class="card-title" id="number_moy_rating2">4</h4>
+                        <span class="fa fa-circle-o" id="1"></span>
+                        <span class="fa fa-circle-o" id="2"></span>
+                        <span class="fa fa-circle-o" id="3"></span>
+                        <span class="fa fa-circle-o" id="4"></span>
+                        <span class="fa fa-circle-o" id="5"></span>
+                        <script>
+                            var MyH4 = document.getElementById("number_moy_rating2").innerHTML;
+                            for(var i=1;i<=MyH4;i++)
+                            {
+                                document.getElementById(i.toString()).className = "fa fa-dot-circle-o";
+                            }
+                        </script>
+                        <h6 class="card-subtitle" id="number_total_rating2"> Très compétent</h6>
+                        <p> sfljsmlkfjdslfkjslkfjmlsfjlksfjsmfjsldfjsfsklfsjsk</p>
                     </div>
                 </div>
             </div>
