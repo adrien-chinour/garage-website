@@ -1,0 +1,29 @@
+/*BODY*/
+body{background-image: url(/img/background.jpg);
+    background-size: cover ;
+    opacity:0.98;
+}
+
+#card1 {
+    margin-top:200px;
+    height:auto;
+    background: rgba(255, 255, 255, 0.85);
+}
+
+#card-body1 {
+    width:60%;
+    display:block;
+    height:auto;
+    padding:0;
+    padding-left:10px;
+    padding-top:10px;
+}
+#img_account {
+    float:left;
+}
+.card-img-account{
+    width: 100px;
+    height:auto;
+    margin:5;
+}
+.card-subtitle.mb-2.text-muted {font-weight: 200;}
