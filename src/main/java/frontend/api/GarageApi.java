@@ -6,7 +6,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import frontend.model.Garage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
+
+import java.util.Map;
 
 @Component
 public class GarageApi implements Api<Garage> {
@@ -24,14 +27,14 @@ public class GarageApi implements Api<Garage> {
     }
 
     @Override
-    public Garage[] getAll() {
-        return mapper.convertValue(apiService.getList(url, null), new TypeReference<Garage[]>() {
+    public Garage[] get(@Nullable Map<String,String> filters) {
+        return mapper.convertValue(apiService.get(url, null), new TypeReference<Garage[]>() {
         });
     }
 
     @Override
-    public Garage get(int id) {
-        return mapper.convertValue(apiService.get(url + '/' + id, null), new TypeReference<Garage>() {
+    public Garage find(int id) {
+        return mapper.convertValue(apiService.find(url + '/' + id), new TypeReference<Garage>() {
         });
     }
 

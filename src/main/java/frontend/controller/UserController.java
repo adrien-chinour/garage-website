@@ -19,7 +19,7 @@ public class UserController {
     @GetMapping("/register/member")
     public String registerMember(Model model) {
         User user = new User();
-        user.setStatus("member");
+        user.setStatus("client");
         model.addAttribute("user", user);
         return "security/register";
     }

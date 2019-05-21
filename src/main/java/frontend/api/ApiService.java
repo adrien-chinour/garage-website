@@ -13,14 +13,14 @@ import java.util.Map;
 @Component
 public class ApiService {
 
-    List getList(String url, Map<String,String> params) {
+    List get(String url, Map<String,String> params) {
         ResponseEntity<String> response = sendRequest(url, HttpMethod.GET, null, params);
         Map<String, Object> data = new JacksonJsonParser().parseMap(response.getBody());
         return (List) data.get("data");
     }
 
-    Object get(String url, Map<String,String> params) {
-        ResponseEntity<String> response = sendRequest(url, HttpMethod.GET, null, params);
+    Object find(String url) {
+        ResponseEntity<String> response = sendRequest(url, HttpMethod.GET, null, null);
         Map<String, Object> data = new JacksonJsonParser().parseMap(response.getBody());
         return data.get("data");
     }

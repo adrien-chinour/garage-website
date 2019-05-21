@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import frontend.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
@@ -27,13 +28,13 @@ public class UserApi implements Api<User> {
     }
 
     @Override
-    public User[] getAll() {
-        return mapper.convertValue(apiService.getList(url, null), new TypeReference<User[]>() {
+    public User[] get(@Nullable Map<String,String> filters) {
+        return mapper.convertValue(apiService.get(url, filters), new TypeReference<User[]>() {
         });
     }
 
     @Override
-    public User get(int id) {
+    public User find(int id) {
         return mapper.convertValue(apiService.get(url + '/' + id, null), new TypeReference<User>() {
         });
     }

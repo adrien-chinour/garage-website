@@ -6,10 +6,10 @@ import frontend.model.Garage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 public class GarageController {
@@ -18,14 +18,21 @@ public class GarageController {
     private GarageApi garageApi;
 
     @GetMapping("/garage")
-    public String list(Model model) {
-        model.addAttribute("garages", garageApi.getAll());
+    public String list(Model model,
+                       @RequestParam(required = false) String name,
+                       @RequestParam(required = false) String adresse) {
+
+        Map<String,String> filters = new HashMap<>();
+        filters.put("name", name);
+        filters.put("adresse", adresse);
+
+        model.addAttribute("garages", garageApi.get(filters));
         return "garage/index";
     }
 
     @GetMapping("/garage/{garageId}")
     public String get(Model model, @PathVariable Integer garageId) {
-        model.addAttribute("garage", garageApi.get(garageId));
+        model.addAttribute("garage", garageApi.find(garageId));
         return "garage/show";
     }
 
@@ -38,7 +45,7 @@ public class GarageController {
 
     @GetMapping("/garage/edit/{garageId}")
     public String edit(Model model, @PathVariable Integer garageId) {
-        model.addAttribute("garage", garageApi.get(garageId));
+        model.addAttribute("garage", garageApi.find(garageId));
         return "garage/edit";
     }
 
