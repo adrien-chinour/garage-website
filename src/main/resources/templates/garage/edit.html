@@ -2,12 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="fr">
 
 <head th:replace="layout :: common_header(~{::title},~{})">
-    <title>Users</title>
+    <title>Garage Corner | Modification d'un garage</title>
 </head>
 
 <body th:replace="layout :: common_body(~{::main},~{})">
 
-<main>
+<main style="margin-top: 200px" class="container">
     <div th:replace="garage/form (action='/garage/edit')"></div>
 </main>
 

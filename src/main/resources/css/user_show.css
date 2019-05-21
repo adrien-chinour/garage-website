@@ -4,8 +4,11 @@ body{background-image: url(/img/background.jpg);
     opacity:0.98;
 }
 
-#card1 {
+main {
     margin-top:200px;
+}
+
+#card1, #card2 {
     height:auto;
     background: rgba(255, 255, 255, 0.85);
 }

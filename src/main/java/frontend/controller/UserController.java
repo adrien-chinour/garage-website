@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 @Controller
 public class UserController {
@@ -36,5 +37,26 @@ public class UserController {
     public String create(@ModelAttribute User user) throws JsonProcessingException {
         userApi.create(user);
         return "redirect:/";
+    }
+
+    @PostMapping("/user/edit")
+    public String edit(@ModelAttribute User user) throws  JsonProcessingException {
+        // TODO add security
+        userApi.edit(user);
+        return "redirect:/profile";
+    }
+
+    @GetMapping("/profile")
+    public String profile(Model model) {
+        // TODO add security
+        User user = new User();
+        user.setUsername("achinour");
+        user.setName("Adrien");
+        user.setFirst_name("Chinour");
+        user.setStatus("member");
+        user.setEmail("achinour@pm.me");
+        user.setPhone("06 42 45 15 47");
+        model.addAttribute("user", user);
+        return "user/show";
     }
 }

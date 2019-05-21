@@ -1,0 +1,24 @@
+<form xmlns:th="http://www.thymeleaf.org" th:fragment="user/form (action)"
+      action="#" th:action="@{${action}}" th:object="${user}" method="post">
+    <div class="form-group">
+        <label for="username">Nom d'utilisateur</label>
+        <input type="text" class="form-control" id="username" required th:field="*{username}">
+    </div>
+    <div class="form-group">
+        <label for="name">Nom</label>
+        <input type="text" class="form-control" id="name" required th:field="*{first_name}">
+    </div>
+    <div class="form-group">
+        <label for="firstname">Prénom</label>
+        <input type="text" class="form-control" id="firstname" required th:field="*{name}">
+    </div>
+    <div class="form-group">
+        <label for="phone">Téléphone</label>
+        <input type="tel" class="form-control" id="phone" th:field="*{phone}">
+    </div>
+    <div class="form-group">
+        <label for="email">Adresse email</label>
+        <input type="email" class="form-control" id="email" required th:field="*{email}">
+    </div>
+    <button type="submit" class="btn btn-danger btn-block">Mettre à jour mes informations personnelles</button>
+</form>

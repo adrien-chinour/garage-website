@@ -22,7 +22,7 @@ public class GarageController {
                        @RequestParam(required = false) String name,
                        @RequestParam(required = false) String adress) {
 
-        Map<String,String> filters = new HashMap<>();
+        Map<String, String> filters = new HashMap<>();
         filters.put("name", name);
         filters.put("adress", adress);
 
@@ -38,6 +38,7 @@ public class GarageController {
 
     @GetMapping("/garage/new")
     public String create(Model model) {
+        // TODO add security
         Garage garage = new Garage();
         model.addAttribute("garage", garage);
         return "garage/new";
@@ -45,19 +46,32 @@ public class GarageController {
 
     @GetMapping("/garage/edit/{garageId}")
     public String edit(Model model, @PathVariable Integer garageId) {
+        // TODO add security
         model.addAttribute("garage", garageApi.find(garageId));
         return "garage/edit";
     }
 
     @PostMapping("/garage/add")
     public String post(@ModelAttribute Garage garage) throws JsonProcessingException {
+        // TODO add security
         garageApi.create(garage);
         return "redirect:/garage";
     }
 
     @PostMapping("/garage/edit")
     public String put(@ModelAttribute Garage garage) throws JsonProcessingException {
+        // TODO add security
         garageApi.edit(garage);
-        return "redirect:/garage" + garage.getId();
+        return "redirect:/garage/manage/";
+    }
+
+    @GetMapping("/garage/manage")
+    public String manage(Model model) {
+        // TODO add security
+        Map<String, String> filters = new HashMap<>();
+        filters.put("partner", "0");
+        Garage[] garages = garageApi.get(filters);
+        model.addAttribute("garages", garages);
+        return "garage/manage";
     }
 }

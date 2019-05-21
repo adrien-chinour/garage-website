@@ -1,6 +1,28 @@
-<div xmlns:th="http://www.thymeleaf.org" th:fragment="garage/form (action)">
-    <form action="#" th:action="@{${action}}" th:object="${garage}" method="post">
-        <p>Name: <input type="text" th:field="*{name}"/></p>
-        <p><input type="submit" value="Submit"/> <input type="reset" value="Reset"/></p>
-    </form>
-</div>
+<form xmlns:th="http://www.thymeleaf.org" th:fragment="garage/form (action)"
+      action="#" th:action="@{${action}}" th:object="${garage}" method="post">
+    <div class="form-group">
+        <label for="name">Nom du garage</label>
+        <input type="text" class="form-control" id="name" required th:field="*{name}">
+    </div>
+    <div class="form-group">
+        <label for="phone">Numéro de téléphone</label>
+        <input type="tel" class="form-control" id="phone" required th:field="*{phone}">
+    </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+        <textarea class="form-control" id="description" required th:field="*{description}" rows="3"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="address">Adresse</label>
+        <input type="text" class="form-control" id="address" required th:field="*{address.address}">
+    </div>
+    <div class="form-group">
+        <label for="city">Ville</label>
+        <input type="text" class="form-control" id="city" required th:field="*{address.city}">
+    </div>
+    <div class="form-group">
+        <label for="country">Pays</label>
+        <input type="text" class="form-control" id="country" required th:field="*{address.country}">
+    </div>
+    <button type="submit" class="btn btn-danger btn-block">Valider</button>
+</form>

@@ -8,27 +8,23 @@
 
 <body th:replace="layout :: common_body(~{::main},~{})">
 
-<main>
-    <div class="card" id="card1">
-        <div class="card-body" id="card-body1">
-            <div class="card-body-dec">
-                <div id="img_account">
-                    <img class="card-img-account" src="/../../img/account_gif.gif" alt="Card image cap">
-                </div>
-                <h4 class="card-title" th:text="${user.name}"></h4>
-                <h6 class="card-subtitle mb-2 text-muted" th:text="${user.email}"></h6>
-                <form>
-                    <div class="col-auto">
-                        <label class="sr-only">Modifier le profil</label>
-                        <div class="input-group mb-2">
-                            <div class="input-group-prepend">
-                                <i class="fa fa-cog"></i>
-                            </div>
-                            <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username">
+<main class="container-fluid">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="card" id="card1">
+                <div class="card-body" id="card-body1">
+                    <div class="card-body-dec">
+                        <div id="img_account">
+                            <img class="card-img-account" src="/../../img/account_gif.gif" alt="Card image cap">
                         </div>
+                        <h4 class="card-title" th:text="${user.name + ' ' + user.first_name}"></h4>
+                        <h6 class="card-subtitle mb-2 text-muted" th:text="${user.email}"></h6>
                     </div>
-                </form>
+                </div>
             </div>
+        </div>
+        <div class="col-md-7">
+            <div th:replace="user/form (action='/user/edit')"></div>
         </div>
     </div>
 </main>
