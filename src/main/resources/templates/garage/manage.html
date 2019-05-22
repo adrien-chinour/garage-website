@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+
+<head th:replace="layout :: common_header(~{::title},~{})">
+    <title>Garage Corner | Ajout d'un garage</title>
+</head>
+
+<body th:replace="layout :: common_body(~{::main},~{})">
+
+<main style="margin-top: 200px" class="container-fluid">
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Nom du garage</th>
+            <th>Adresse</th>
+            <th>Ville</th>
+            <th>Pays</th>
+            <th>Moyenne des notes</th>
+            <th>Nombre d'avis</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="garage : ${garages}">
+            <td th:text="${garage.name}"></td>
+            <td th:text="${garage.address.address}"></td>
+            <td th:text="${garage.address.city}"></td>
+            <td th:text="${garage.address.country}"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+
+</body>
+</html>

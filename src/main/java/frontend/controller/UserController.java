@@ -8,8 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 @Controller
 public class UserController {
@@ -17,40 +17,46 @@ public class UserController {
     @Autowired
     private UserApi userApi;
 
-    @GetMapping("/user")
-    public String list(Model model) {
-        model.addAttribute("users", userApi.getAll());
-        return "user/index";
-    }
-
-    @GetMapping("/user/{userId}")
-    public String get(Model model, @PathVariable Integer userId) {
-        model.addAttribute("user", userApi.get(userId));
-        return "user/show";
-    }
-
-    @GetMapping("/user/new")
-    public String create(Model model) {
+    @GetMapping("/register/member")
+    public String registerMember(Model model) {
         User user = new User();
+        user.setStatus("client");
         model.addAttribute("user", user);
-        return "user/new";
+        return "security/register";
     }
 
-    @GetMapping("/user/edit/{userId}")
-    public String edit(Model model, @PathVariable Integer userId) {
-        model.addAttribute("user", userApi.get(userId));
-        return "user/edit";
+    @GetMapping("/register/partner")
+    public String registerPartner(Model model) {
+        User user = new User();
+        user.setStatus("partner");
+        model.addAttribute("user", user);
+        return "security/register-partner";
     }
 
     @PostMapping("/user/add")
-    public String post(@ModelAttribute User user) throws JsonProcessingException {
+    public String create(@ModelAttribute User user) throws JsonProcessingException {
         userApi.create(user);
-        return "redirect:/user";
+        return "redirect:/";
     }
 
     @PostMapping("/user/edit")
-    public String put(@ModelAttribute User user) throws JsonProcessingException {
+    public String edit(@ModelAttribute User user) throws  JsonProcessingException {
+        // TODO add security
         userApi.edit(user);
-        return "redirect:/user/" + user.getId();
+        return "redirect:/profile";
+    }
+
+    @GetMapping("/profile")
+    public String profile(Model model) {
+        // TODO add security
+        User user = new User();
+        user.setUsername("achinour");
+        user.setName("Adrien");
+        user.setFirst_name("Chinour");
+        user.setStatus("member");
+        user.setEmail("achinour@pm.me");
+        user.setPhone("06 42 45 15 47");
+        model.addAttribute("user", user);
+        return "user/show";
     }
 }

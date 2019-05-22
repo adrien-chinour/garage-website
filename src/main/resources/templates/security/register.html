@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head th:replace="layout :: common_header(~{::title},~{::link})">
+    <title>Garage Corner | Connexion</title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/register.css}">
+</head>
+
+<body th:replace="layout :: common_body(~{::form},~{})">
+
+<form id="form-signup" action="#" th:action="@{/user/add}" th:object="${user}" method="post">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="name">Nom</label>
+                    <input type="text" class="form-control" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="firstname">Prénom</label>
+                    <input type="text" class="form-control" id="firstname" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Téléphone</label>
+                    <input type="tel" class="form-control" id="phone">
+                </div>
+                <div class="form-group">
+                    <label for="email">Adresse email</label>
+                    <input type="email" class="form-control" id="email" required>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="username">Nom d'utilisateur</label>
+                    <input type="text" class="form-control" id="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" class="form-control" id="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="password_repeat"> Répétez le mot de passe</label>
+                    <input type="password" class="form-control" id="password_repeat" required>
+                </div>
+                <button type="submit" class="btn btn-danger btn-block">Inscription</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+
+</body>
+</html>

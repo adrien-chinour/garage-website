@@ -1,15 +1,20 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="fr">
 <nav class="navbar navbar-expand-md fixed-top">
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault" >
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <div>
-            <img src="../../img/logo_garage.jpg"  />
+            <a href="/"><img src="../../img/logo_garage.jpg" alt="logo"/></a>
         </div>
         <ul class="navbar-nav">
-            <li> <button type="button" class="btn btn-light">  <i class="fa fa-wrench" aria-hidden="true"></i>Vous êtes un professionnel automobile ? </button>
-                <button type="button" class="btn" ><i class="fa fa-question-circle-o fa-2x" aria-hidden="true"></i>
-                    Besoin d'Aide ? </button>
-                <button type="button" class="btn"><i class="fa fa-user-o fa-2x" aria-hidden="true"></i>
-                    Mon compte</button>
+            <li>
+                <a href="/register/partner" class="btn btn-light">
+                    <i class="fa fa-wrench" aria-hidden="true"></i>Vous êtes un professionnel automobile ?
+                </a>
+                <a href="#" class="btn btn-outline-light">
+                    <i class="fa fa-question-circle-o" aria-hidden="true"></i>Besoin d'Aide ?
+                </a>
+                <a href="/login" class="btn btn-outline-light">
+                    <i class="fa fa-user-o" aria-hidden="true"></i> Mon compte
+                </a>
             </li>
         </ul>
 

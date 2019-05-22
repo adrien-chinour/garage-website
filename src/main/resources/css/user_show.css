@@ -3,6 +3,7 @@ body{background-image: url(/img/background.jpg);
     background-size: cover ;
     opacity:0.98;
 }
+<<<<<<< HEAD
 #global{
     margin-top:200px;
     margin-right: 20px;
@@ -21,6 +22,20 @@ flex-wrap: nowrap;}
 
 .card-body {
     width:100%;
+=======
+
+main {
+    margin-top:200px;
+}
+
+#card1, #card2 {
+    height:auto;
+    background: rgba(255, 255, 255, 0.85);
+}
+
+#card-body1 {
+    width:60%;
+>>>>>>> 6ddd4bacaf63004d9efe4f563007aa8d7bef049b
     display:block;
     height:auto;
     padding:0;
@@ -31,6 +46,7 @@ flex-wrap: nowrap;}
 #img_account {
     float:left;
 }
+<<<<<<< HEAD
 #img_account2 {
     float:left;
 }
@@ -43,6 +59,8 @@ flex-wrap: nowrap;}
 #img_account2 h6 {
     float:right;
 }
+=======
+>>>>>>> 6ddd4bacaf63004d9efe4f563007aa8d7bef049b
 .card-img-account{
     width: 100px;
     height:auto;
