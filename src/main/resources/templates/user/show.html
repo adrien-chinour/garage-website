@@ -9,6 +9,7 @@
 <body th:replace="layout :: common_body(~{::main},~{})">
 
 <main>
+    <div id="global">
     <div class="card"  id="card1">
         <div class="card-body" id="card-body1">
             <div class="card-body-dec">
@@ -17,17 +18,49 @@
                 </div>
                 <h4 class="card-title" th:text="${user.name}"></h4>
                 <h6 class="card-subtitle mb-2 text-muted" th:text="${user.email}"></h6>
-                <form>
-                <div class="col-auto">
-                <label class="sr-only">Modifier le profil</label>
-                <div class="input-group mb-2">
-                    <div class="input-group-prepend">
-                        <i class="fa fa-cog"></i>
+            </div>
+            <form  action="/action_page.php" id="col-auto">
+                <i class="fa fa-cog"></i>  <button type="submit" class="btn btn-primary">Modifier le profil </button>
+            </form>
+        </div>
+    </div>
+        <div class="row" id="row1">
+            <div class="col-sm-6" >
+                <div class="card" id="card2">
+                    <div class="card-body">
+                        <h5 class="card-title" id="card-title2">Présentation</h5>
+                       <h6 class="card-subtitle mb-2 text-muted" >" </h6> <p></p>  <h6 class="card-subtitle mb-2 text-muted" > "</h6>
                     </div>
-                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username">
                 </div>
             </div>
-            </form>
+            <div class="col-sm-6" >
+                <div class="card" id="card3" >
+                    <div class="card-body" >
+                        <div id="img_account2" >
+                            <img class="card-img-account2" src="/../../img/account_gif.gif" alt="Card image cap">
+                        </div>
+                        <div id="button_desc4">
+                            <div class="rating" id="rating2">
+                                <h4 class="card-title" id="number_moy_rating2">4</h4>
+                                <span class="fa fa-circle-o" id="1"></span>
+                                <span class="fa fa-circle-o" id="2"></span>
+                                <span class="fa fa-circle-o" id="3"></span>
+                                <span class="fa fa-circle-o" id="4"></span>
+                                <span class="fa fa-circle-o" id="5"></span>
+                                <script>
+                                    var MyH4 = document.getElementById("number_moy_rating2").innerHTML;
+                                    for(var i=1;i<=MyH4;i++)
+                                    {
+                                        document.getElementById(i.toString()).className = "fa fa-dot-circle-o";
+                                    }
+                                </script>
+                                <h6 class="card-subtitle" id="number_total_rating2"> Très compétent</h6>
+                                <p> sfljsmlkfjdslfkjslkfjmlsfjlksfjsmfjsldfjsfsklfsjsk</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </main>
