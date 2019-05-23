@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="fr">
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
 <head th:replace="layout :: common_header(~{::title},~{::link})">
     <title>Garage Corner | Connexion</title>
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/login.css}">
@@ -7,17 +7,12 @@
 
 <body th:replace="layout :: common_body(~{::form},~{})">
 
-<form id="form-signin" th:action="@{/login}" method="post">
-    <div sec:authorize="isAuthenticated()">
-        <span>test</span>
-    </div>
+<form id="form-signin" th:action="@{/login}" th:object="${credentials}" method="post">
     <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
-    <p class="text-danger" th:if="${param.error}">Nom d'utilisateur ou mot de passe incorrect.</p>
-    <p class="text-danger" th:if="${param.logout}">Vous avez été déconnecté.</p>
     <label for="username" class="sr-only">Nom d'utilisateur</label>
-    <input type="text" id="username" class="form-control" placeholder="Nom d'utilisateur" required autofocus>
+    <input type="text" id="username" class="form-control" placeholder="Nom d'utilisateur" required autofocus th:field="*{username}">
     <label for="password" class="sr-only">Mot de passe</label>
-    <input type="password" id="password" class="form-control" placeholder="Mot de passe" required>
+    <input type="password" id="password" class="form-control" placeholder="Mot de passe" required th:field="*{password}">
     <button class="btn btn-lg btn-danger btn-block" type="submit">Connexion</button>
     <a class="text-danger" href="/register/member">Je m'inscris</a>
 </form>

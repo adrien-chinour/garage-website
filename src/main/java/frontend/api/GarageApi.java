@@ -14,40 +14,39 @@ import java.util.Map;
 @Component
 public class GarageApi implements Api<Garage> {
 
-    private String url;
-
     @Autowired
     private ApiService apiService;
 
     private ObjectMapper mapper;
 
-    public GarageApi(@Value("${api.baseUrl}") String url) {
+    private final String base = "/garages";
+
+    public GarageApi() {
         this.mapper = new ObjectMapper();
-        this.url = url + "/garages";
     }
 
     @Override
-    public Garage[] get(@Nullable Map<String,String> filters) {
-        return mapper.convertValue(apiService.get(url, null), new TypeReference<Garage[]>() {
+    public Garage[] get(@Nullable Map<String, String> filters) {
+        return mapper.convertValue(apiService.get(base, null), new TypeReference<Garage[]>() {
         });
     }
 
     @Override
     public Garage find(int id) {
-        return mapper.convertValue(apiService.find(url + '/' + id), new TypeReference<Garage>() {
+        return mapper.convertValue(apiService.find(base + '/' + id), new TypeReference<Garage>() {
         });
     }
 
     @Override
     public Garage create(Garage entity) throws JsonProcessingException {
-        Object data = apiService.post(url, mapper.writeValueAsString(entity));
+        Object data = apiService.post(base, mapper.writeValueAsString(entity));
         return mapper.convertValue(data, new TypeReference<Garage>() {
         });
     }
 
     @Override
     public Garage edit(Garage entity) throws JsonProcessingException {
-        Object data = apiService.put(url + '/' + entity.getId(), mapper.writeValueAsString(entity));
+        Object data = apiService.put(base + '/' + entity.getId(), mapper.writeValueAsString(entity));
         return mapper.convertValue(data, new TypeReference<Garage>() {
         });
     }
