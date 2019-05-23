@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="fr">
 
 <head th:replace="layout :: common_header(~{::title},~{::link})">
     <title th:text="${garage.name}"></title>
@@ -10,25 +10,25 @@
 
 <main>
     <div id="global">
-        <div class="card"  id="card1">
+        <div class="card" id="card1">
             <div class="card-body" id="card-body1">
                 <div class="card-body-dec">
                     <h4 class="card-title" th:text="${garage.name}"></h4>
                     <h6 class="card-subtitle mb-2 text-muted" th:text="${garage.address.city}"></h6>
-                    <div id="address_icon"> <i class="fa fa-map-marker fa-3x"></i>
+                    <div id="address_icon"><i class="fa fa-map-marker fa-3x"></i>
                         <div id="address_desc">
-                            <p class="card-text" th:text="${garage.getAddress().address}"> </p>
-                            <p class="card-text" th:text="${garage.getAddress().city}"> </p>
-                            <p class="card-text" th:text="${garage.getAddress().country}"> </p>
+                            <p class="card-text" th:text="${garage.getAddress().address}"></p>
+                            <p class="card-text" th:text="${garage.getAddress().city}"></p>
+                            <p class="card-text" th:text="${garage.getAddress().country}"></p>
                         </div>
                     </div>
                 </div>
                 <div id="button_desc">
                     <i class="fa fa-phone fa-3x"></i>
                     <a href="#" class="btn btn-primary" id="btn_call" th:text="${garage.phone}"></a>
-                    <a href="#"  class="btn btn-primary" id="btn_opinion">Ecrire un avis</a>
+                    <a href="#form-avis" class="btn btn-primary" id="btn_opinion">Ecrire un avis</a>
                 </div>
-                <div id="img_garage" >
+                <div id="img_garage">
                     <img class="card-img-right" src="/../../img/example_img_garage.jpg" alt="Card image cap">
                     <img class="card-img-right" src="/../../img/example_img_garage.jpg" alt="Card image cap">
                 </div>
@@ -36,132 +36,154 @@
         </div>
         <div class="row" id="row1">
             <div class="col-sm-6" id="card2">
-                <div class="card" >
+                <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title" id="card-title2">Notes et avis</h5>
+                        <h5 class="card-title">Notes et avis</h5>
                         <div class="rating" id="rating1">
-                            <h4 class="card-title" id="number_moy_rating">4</h4>
-                            <span class="fa fa-circle-o" id="1"></span>
-                            <span class="fa fa-circle-o" id="2"></span>
-                            <span class="fa fa-circle-o" id="3"></span>
-                            <span class="fa fa-circle-o" id="4"></span>
-                            <span class="fa fa-circle-o" id="5"></span>
-                            <h6 class="card-subtitle" id="number_total_rating"> 12 avis</h6>
+                            <h4 class="card-title" id="number_moy_rating" th:text="${garage.getAverageNote()}"></h4>
+                            <span class="fa fa-circle-o" id="circle-1"></span>
+                            <span class="fa fa-circle-o" id="circle-2"></span>
+                            <span class="fa fa-circle-o" id="circle-3"></span>
+                            <span class="fa fa-circle-o" id="circle-4"></span>
+                            <span class="fa fa-circle-o" id="circle-5"></span>
+                            <h6 class="card-subtitle" id="number_total_rating">
+                                <span th:text="${garage.getNumberComment()}"></span> avis
+                            </h6>
                             <script>
                                 var MyH4 = document.getElementById("number_moy_rating").innerHTML;
-                                for(var i=1;i<=MyH4;i++)
-                                {
-                                    document.getElementById(i.toString()).className = "fa fa-dot-circle-o";
+                                for (var i = 1; i <= MyH4; i++) {
+                                    document.getElementById("circle-" + i.toString()).className = "fa fa-dot-circle-o";
                                 }
                             </script>
                         </div>
                         <div id="link">
-                            <i class="fa fa-envelope fa-2x" aria-hidden="true"></i> <a href="#" >Site internet</a><br>
-                            <i class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></i> <a href="#" >Adresse mail</a>
+                            <i class="fa fa-envelope fa-2x" aria-hidden="true"></i> <a href="#">Site internet</a><br>
+                            <i class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></i> <a href="#">Adresse
+                            mail</a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-sm-6" id="card3">
-                <div class="card" >
-                    <div class="card-body" >
-                        <h5 class="card-title" id="card-title3">Détails</h5>
-                        <h5 class="card-subtitle" id="card-subtitle-title2">Fourchette de prix</h5>
-                        <p >Prix </p>
-                        <h5 class="card-subtitle" id="card-subtitle-title3">Description</h5>
-                        <p class="card-text" th:text="${garage.description}"> </p>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Détails</h5>
+                        <h5 class="card-subtitle">Description</h5>
+                        <p class="card-text" th:text="${garage.description}"></p>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="card"  id="card4">
+        <div class="card" id="card4">
             <div class="card-body" id="card-body4">
                 <div class="card-body" id="title-comment">
-                    <h5 class="card-title" id="card-title2">Avis (12)</h5>
-                    <i class="fa fa-question-circle fa-2x"></i> <h6 class="card-subtitle mb-2 text-muted" id="subtitle-comment"> Contrôle des avis</h6>
+                    <h5 class="card-title" id="card-title2">Avis (<span th:text="${garage.getNumberComment()}"></span>)
+                    </h5>
+                    <i class="fa fa-question-circle fa-2x"></i> <h6 class="card-subtitle mb-2 text-muted"
+                                                                    id="subtitle-comment"> Contrôle des avis</h6>
                 </div>
                 <div class="card-body" id="title-comment2">
                     <h5 class="card-title" id="card-title4">Note attribuée</h5>
                     <div class="row" id="row_rating">
                         <div class="side">
-                            <div id="side_div">Excellent</div>
+                            <div class="side_div">Excellent</div>
                         </div>
                         <div class="middle">
                             <div class="bar-container">
-                                <div class="bar-5"></div>
+                                <div class="bar-5" th:style="'width:' + ${garage.getPercentNote(5)} + '%;'"></div>
                             </div>
                         </div>
                         <div class="side right">
-                            <div>5</div>
+                            <div th:text="${garage.getNumberNote(5)}">5</div>
                         </div>
                         <div class="side">
-                            <div id="side_div">Très bien</div>
+                            <div class="side_div">Très bien</div>
                         </div>
                         <div class="middle">
                             <div class="bar-container">
-                                <div class="bar-4"></div>
+                                <div class="bar-4" th:style="'width:' + ${garage.getPercentNote(4)} + '%;'"></div>
                             </div>
                         </div>
                         <div class="side right">
-                            <div>4</div>
+                            <div th:text="${garage.getNumberNote(4)}">4</div>
                         </div>
                         <div class="side">
-                            <div id="side_div">?</div>
+                            <div class="side_div">Moyen</div>
                         </div>
                         <div class="middle">
                             <div class="bar-container">
-                                <div class="bar-3"></div>
+                                <div class="bar-3" th:style="'width:' + ${garage.getPercentNote(3)} + '%;'"></div>
                             </div>
                         </div>
                         <div class="side right">
-                            <div>3</div>
+                            <div th:text="${garage.getNumberNote(3)}">3</div>
                         </div>
                         <div class="side">
-                            <div id="side_div">Moyen</div>
+                            <div class="side_div">Plutôt mauvais</div>
                         </div>
                         <div class="middle">
                             <div class="bar-container">
-                                <div class="bar-2"></div>
+                                <div class="bar-2" th:style="'width:' + ${garage.getPercentNote(2)} + '%;'"></div>
                             </div>
                         </div>
                         <div class="side right">
-                            <div>2</div>
+                            <div th:text="${garage.getNumberNote(2)}">2</div>
                         </div>
                         <div class="side">
-                            <div id="side_div">Médiocre</div>
+                            <div class="side_div">Médiocre</div>
                         </div>
                         <div class="middle">
                             <div class="bar-container">
-                                <div class="bar-1"></div>
+                                <div class="bar-1" th:style="'width:' + ${garage.getPercentNote(1)} + '%;'"></div>
                             </div>
                         </div>
                         <div class="side right">
-                            <div>1</div>
+                            <div th:text="${garage.getNumberNote(1)}">1</div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="card-body" id="card-body5">
-                <div></div>
-                </div>
-                <div id="button_desc4">
-                    <div class="rating" id="rating2">
-                        <h4 class="card-title" id="number_moy_rating2">4</h4>
-                        <span class="fa fa-circle-o" id="1"></span>
-                        <span class="fa fa-circle-o" id="2"></span>
-                        <span class="fa fa-circle-o" id="3"></span>
-                        <span class="fa fa-circle-o" id="4"></span>
-                        <span class="fa fa-circle-o" id="5"></span>
-                        <script>
-                            var MyH4 = document.getElementById("number_moy_rating2").innerHTML;
-                            for(var i=1;i<=MyH4;i++)
-                            {
-                                document.getElementById(i.toString()).className = "fa fa-dot-circle-o";
-                            }
-                        </script>
-                        <h6 class="card-subtitle" id="number_total_rating2"> Très compétent</h6>
-                        <p> sfljsmlkfjdslfkjslkfjmlsfjlksfjsmfjsldfjsfsklfsjsk</p>
+            <div class="card-body" id="form-avis" >
+                <h4>Écrire un commentaire :</h4>
+                <form sec:authorize="hasRole('ROLE_MEMBER')"
+                      th:action="${'/garage/comment/'+garage.id}" th:object="${comment}" method="post">
+                    <div class="form-group">
+                        <label for="comment">Commentaire :</label>
+                        <textarea class="form-control" id="comment" rows="3" required
+                                  th:field="*{comment}"></textarea>
                     </div>
+                    <div class="form-group">
+                        <label for="note">Note :</label>
+                        <select class="form-control" id="note" required th:field="*{note}">
+                            <option th:value="5">Excellent</option>
+                            <option th:value="4">Très bien</option>
+                            <option th:value="3">Moyen</option>
+                            <option th:value="2">Plutôt mauvais</option>
+                            <option th:value="1">Médiocre</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-danger btn-block">Envoyer mon commentaire</button>
+                </form>
+                <a th:href="@{/login}" sec:authorize="!isAuthenticated()" class="btn btn-danger btn-lg btn-block">
+                    Authentifiez-vous pour pouvoir écrire un commentaire !
+                </a>
+            </div>
+            <div id="button_desc4" th:each="comment : ${garage.comments}">
+                <div class="rating" id="rating2">
+                    <h4 class="card-title" id="number_moy_rating2" th:text="${comment.note}"></h4>
+                    <span class="fa fa-circle-o" id="1"></span>
+                    <span class="fa fa-circle-o" id="2"></span>
+                    <span class="fa fa-circle-o" id="3"></span>
+                    <span class="fa fa-circle-o" id="4"></span>
+                    <span class="fa fa-circle-o" id="5"></span>
+                    <script>
+                        var MyH4 = document.getElementById("number_moy_rating2").innerHTML;
+                        for (var i = 1; i <= MyH4; i++) {
+                            document.getElementById(i.toString()).className = "fa fa-dot-circle-o";
+                        }
+                    </script>
+                    <h6 class="card-subtitle">Commentaire :</h6>
+                    <p th:text="${comment.comment}"></p>
                 </div>
             </div>
         </div>

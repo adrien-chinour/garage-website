@@ -40,7 +40,7 @@ public class ApiAuthenticationManager implements AuthenticationManager {
                     return getAuthentication(authentication);
                 }
             } catch (Exception e) {
-                e.printStackTrace();
+                return null;
             }
         }
 
@@ -49,9 +49,12 @@ public class ApiAuthenticationManager implements AuthenticationManager {
 
     private Authentication getAuthentication(Authentication authentication) {
         User user = userApi.getByUsername((String) authentication.getPrincipal());
-        return new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword(), getAuthorities(user));
-    }
+        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
+                new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword(), getAuthorities(user));
+        usernamePasswordAuthenticationToken.setDetails(user);
 
+        return usernamePasswordAuthenticationToken;
+    }
 
     private List<SimpleGrantedAuthority> getAuthorities(User user) {
         SimpleGrantedAuthority authority;

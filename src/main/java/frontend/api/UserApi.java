@@ -14,8 +14,6 @@ import java.util.Map;
 @Component
 public class UserApi implements Api<User> {
 
-    private String url;
-
     @Autowired
     private ApiService apiService;
 
@@ -44,6 +42,7 @@ public class UserApi implements Api<User> {
         params.put("username", username);
         User[] users = mapper.convertValue(apiService.get(base, params), new TypeReference<User[]>() {
         });
+        System.out.println("userapi = " + users.length);
 
         return users.length == 1 ? users[0] : null;
     }
@@ -63,7 +62,7 @@ public class UserApi implements Api<User> {
     }
 
     @Override
-    public User delete(int id) {
-        return null;
+    public void delete(int id) {
+        apiService.delete(base + '/' + id);
     }
 }

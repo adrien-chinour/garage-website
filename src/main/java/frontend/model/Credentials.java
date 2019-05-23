@@ -21,4 +21,12 @@ public class Credentials {
     public Object getPassword() {
         return password;
     }
+
+    public void setUsername(Object username) {
+        this.username = username;
+    }
+
+    public void setPassword(Object password) {
+        this.password = password;
+    }
 }

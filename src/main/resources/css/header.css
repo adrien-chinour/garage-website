@@ -7,6 +7,10 @@
     position: fixed;
 }
 
+main {
+    margin-top: 200px;
+}
+
 #navbarsExampleDefault img {
     width: 200px;
     height: auto;

@@ -1,0 +1,17 @@
+<ul xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+    th:fragment="fragments/navbar" class="navbar-nav">
+    <li>
+        <a sec:authorize="!isAuthenticated()" href="/register/partner" class="btn btn-light">
+            <i class="fa fa-wrench" aria-hidden="true"></i>Vous êtes un professionnel automobile ?
+        </a>
+        <a href="/help" class="btn btn-outline-light">
+            <i class="fa fa-question-circle-o" aria-hidden="true"></i>Besoin d'Aide ?
+        </a>
+        <a sec:authorize="isAuthenticated()" href="/profile" class="btn btn-outline-light">
+            <i class="fa fa-user-o" aria-hidden="true"></i> Mon compte
+        </a>
+        <a sec:authorize="!isAuthenticated()" href="/login" class="btn btn-outline-light">
+            <i class="fa fa-user-o" aria-hidden="true"></i> Mon compte
+        </a>
+    </li>
+</ul>

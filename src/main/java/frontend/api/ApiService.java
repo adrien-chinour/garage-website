@@ -6,7 +6,9 @@ import org.springframework.http.*;
 import org.springframework.http.client.support.BasicAuthorizationInterceptor;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.Collections;
 import java.util.List;
@@ -21,7 +23,7 @@ public class ApiService {
         this.url = url;
     }
 
-    List get(String endpoint, Map<String,String> params) {
+    List get(String endpoint, Map<String, String> params) {
         ResponseEntity<String> response = sendRequest(endpoint, HttpMethod.GET, null, params);
         Map<String, Object> data = new JacksonJsonParser().parseMap(response.getBody());
         return (List) data.get("data");
@@ -43,7 +45,14 @@ public class ApiService {
         return new JacksonJsonParser().parseMap(response.getBody());
     }
 
+    void delete(String endpoint) {
+        sendRequest(endpoint, HttpMethod.DELETE, null, null);
+    }
+
     ResponseEntity<String> sendRequest(String endpoint, HttpMethod method, @Nullable String body, @Nullable Map<String, String> params) {
+        System.out.println("Request body :" + body);
+        System.out.println("Request params :" + params);
+
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -51,17 +60,23 @@ public class ApiService {
         HttpEntity<String> entity;
         ResponseEntity<String> response;
 
-        entity = body == null
-                ? new HttpEntity<>(headers)
-                : new HttpEntity<>(body, headers);
+        if (body == null) {
+            entity = new HttpEntity<>(headers);
+        } else {
+            entity = new HttpEntity<>(body, headers);
+        }
+
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(this.url + endpoint);
+        if (params != null) {
+            for (Map.Entry<String, String> entry : params.entrySet()) {
+                builder.queryParam(entry.getKey(), entry.getValue());
+            }
+        }
 
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.getInterceptors().add(
                 new BasicAuthorizationInterceptor("Admin", "Admin"));
-        response = params == null
-                ? restTemplate.exchange(this.url + endpoint, method, entity, String.class)
-                : restTemplate.exchange(this.url + endpoint, method, entity, String.class, params);
-
-        return  response;
+        response = restTemplate.exchange(builder.toUriString(), method, entity, String.class);
+        return response;
     }
 }

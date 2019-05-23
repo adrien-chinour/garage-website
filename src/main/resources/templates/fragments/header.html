@@ -1,23 +1,9 @@
-<html xmlns:th="http://www.thymeleaf.org" lang="fr">
-<nav class="navbar navbar-expand-md fixed-top">
+<nav xmlns:th="http://www.thymeleaf.org"  class="navbar navbar-expand-md fixed-top">
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <div>
             <a href="/"><img src="../../img/logo_garage.jpg" alt="logo"/></a>
         </div>
-        <ul class="navbar-nav">
-            <li>
-                <a href="/register/partner" class="btn btn-light">
-                    <i class="fa fa-wrench" aria-hidden="true"></i>Vous êtes un professionnel automobile ?
-                </a>
-                <a href="#" class="btn btn-outline-light">
-                    <i class="fa fa-question-circle-o" aria-hidden="true"></i>Besoin d'Aide ?
-                </a>
-                <a href="/login" class="btn btn-outline-light">
-                    <i class="fa fa-user-o" aria-hidden="true"></i> Mon compte
-                </a>
-            </li>
-        </ul>
-
+        <ul th:replace="fragments/navbar"></ul>
     </div>
-    <div id="search_bar" th:replace="fragments/search_bar"></div>
+    <div th:replace="fragments/search_bar"></div>
 </nav>

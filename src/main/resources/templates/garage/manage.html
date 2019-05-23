@@ -26,9 +26,14 @@
             <td th:text="${garage.address.address}"></td>
             <td th:text="${garage.address.city}"></td>
             <td th:text="${garage.address.country}"></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td th:text="${garage.getAverageNote()}"></td>
+            <td th:text="${garage.getNumberComment()}"></td>
+            <td>
+                <div class="btn-group" role="group">
+                    <a href="#" th:href="${'/garage/edit/' + garage.id}" class="btn btn-primary">Modifier</a>
+                    <a href="#" th:href="${'/garage/delete/' + garage.id}"  class="btn btn-danger">Supprimer</a>
+                </div>
+            </td>
         </tr>
         </tbody>
     </table>

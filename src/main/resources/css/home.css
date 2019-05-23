@@ -1,64 +1,86 @@
 /*BODY*/
-body{ background-image: url(/img/home_garage.jpg);
-    background-size: cover ;
+body {
+    background-image: url(/img/home_garage.jpg);
+    background-size: cover;
 }
-.navbar.navbar-expand-md.fixed-top{
-    width : 100%;
-    height:180px;
-    display:block;
+
+.navbar.navbar-expand-md.fixed-top {
+    width: 100%;
+    height: 180px;
+    display: block;
 }
-#navbarsExampleDefault img {width: 200px;height: auto;margin-top: 6%;}
-#navbarsExampleDefault li {position: absolute;right: 3%;top: 6%;}
-#navbarsExampleDefault button {font-size:15px;background-color:transparent; margin-right: 10px;color:white;}
-i.fa.fa-wrench {padding-right:10px;}
+
+#navbarsExampleDefault img {
+    width: 200px;
+    height: auto;
+    margin-top: 6%;
+}
+
+#navbarsExampleDefault li {
+    position: absolute;
+    right: 3%;
+    top: 6%;
+}
+
+#navbarsExampleDefault button {
+    font-size: 15px;
+    background-color: transparent;
+    margin-right: 10px;
+    color: white;
+}
+
+i.fa.fa-wrench {
+    padding-right: 10px;
+}
 
 /* FORM SEARCH*/
-.search-sec{
-    margin-top : 20%;
-    margin-left:17%;
+.search-sec {
+    margin-top: 20%;
+    margin-left: 17%;
 }
 
 /*INPUT*/
-.row input{
-    height:65px;
+.row input {
+    height: 65px;
     background: rgba(255, 255, 255, 0.70);
-    font-size:20px;
+    font-size: 20px;
     text-indent: 28px;
 }
+
 /*BUTTON*/
 .row button {
-    width:220px;
-    Height:65px;
+    width: 220px;
+    Height: 65px;
     background: rgba(251, 34, 34, 0.70);
     border: none;
     font-weight: 400;
-    font-size:22px;
+    font-size: 22px;
 }
 
 /*ICONS*/
 .col-lg-3.col-lg-3.col-lg-40.p-0 {
-    position:relative;
+    position: relative;
 }
 
-.col-lg-3.col-lg-3.col-lg-40.p-0  i {
-    position:absolute;
+.col-lg-3.col-lg-3.col-lg-40.p-0 i {
+    position: absolute;
 }
 
-.fa.fa-search.fa-1x{
-    padding-top:18px;
-    padding-left:6px;
+.fa.fa-search.fa-1x {
+    padding-top: 18px;
+    padding-left: 6px;
     color: rgba(251, 34, 34, 0.80);
-    font-size:25px;
+    font-size: 25px;
 }
 
-.fa.fa-map-marker.fa-2x{
-    padding-top:15px;
-    padding-left:12px;
+.fa.fa-map-marker.fa-2x {
+    padding-top: 15px;
+    padding-left: 12px;
     color: rgba(251, 34, 34, 0.80);
 }
 
-.fa-flag-checkered.fa-1x{
-    color:white;
-    padding-left:12px;
-    padding-top:7px;
+.fa-flag-checkered.fa-1x {
+    color: white;
+    padding-left: 12px;
+    padding-top: 7px;
 }

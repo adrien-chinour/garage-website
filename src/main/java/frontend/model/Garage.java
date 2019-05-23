@@ -1,5 +1,7 @@
 package frontend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.ArrayList;
 
 public class Garage {
@@ -23,6 +25,39 @@ public class Garage {
     private ArrayList<Comment> comments;
 
     public Garage() {
+    }
+
+    @JsonIgnore
+    public int getNumberComment() {
+        return getComments().size();
+    }
+
+    @JsonIgnore
+    public int getAverageNote() {
+        int average = 0;
+        for (Comment comment: getComments()) {
+            average += comment.getNote();
+        }
+
+        return comments.size() != 0 ? average / comments.size() : 0;
+    }
+
+    @JsonIgnore
+    public int getNumberNote(int note) {
+        int number = 0;
+        for (Comment comment: getComments()) {
+            if(comment.getNote() == note)
+                number++;
+        }
+        return number;
+    }
+
+    @JsonIgnore
+    public int getPercentNote(int note) {
+        if(getComments().size() == 0 || getNumberNote(note) == 0) {
+            return 0;
+        }
+        return Math.round((float) getNumberNote(note) / getComments().size() * 100);
     }
 
     public int getId() {

@@ -7,7 +7,7 @@
 
 <body th:replace="layout :: common_body(~{::form},~{})">
 
-<form id="form-signup" action="#" th:action="@{/user/add/client}" th:object="${user}" method="post">
+<form id="form-signup" action="#" th:action="@{/user/add/partner}" th:object="${user}" method="post">
     <div class="container">
         <div class="row">
             <div class="col-md-6">
@@ -23,12 +23,12 @@
                     <label for="phone">Téléphone</label>
                     <input type="tel" class="form-control" id="phone" th:field="*{phone}">
                 </div>
-                <div class="form-group">
-                    <label for="email">Adresse email</label>
-                    <input type="email" class="form-control" id="email" required th:field="*{email}">
-                </div>
             </div>
             <div class="col-md-6">
+                <div class="form-group">
+                    <label for="email">Adresse email</label>
+                    <input type="email" class="form-control" id="email" th:field="*{email}">
+                </div>
                 <div class="form-group">
                     <label for="username">Nom d'utilisateur</label>
                     <input type="text" class="form-control" id="username" required th:field="*{username}">
@@ -37,17 +37,11 @@
                     <label for="password">Mot de passe</label>
                     <input type="password" class="form-control" id="password" required th:field="*{password}">
                 </div>
-                <div class="form-group">
-                    <label for="password_repeat"> Répétez le mot de passe</label>
-                    <input type="password" class="form-control" id="password_repeat" required>
-                </div>
-                <button type="submit" class="btn btn-danger btn-block">Inscription</button>
             </div>
+            <button type="submit" class="btn btn-danger btn-block">Inscription</button>
         </div>
     </div>
 </form>
-
-
 
 </body>
 </html>

@@ -24,22 +24,18 @@ import java.security.Principal;
 import static org.springframework.security.web.context.HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY;
 
 @Controller
-public class UserController {
-
-    private final UserApi userApi;
-
-    private final ApiAuthenticationManager apiAuthenticationManager;
+public class UserController extends AbstractController {
 
     @Autowired
-    public UserController(UserApi userApi, ApiAuthenticationManager apiAuthenticationManager) {
-        this.userApi = userApi;
-        this.apiAuthenticationManager = apiAuthenticationManager;
-    }
+    private UserApi userApi;
+
+    @Autowired
+    private ApiAuthenticationManager apiAuthenticationManager;
 
     @GetMapping("/login")
     public String login(Model model) {
         model.addAttribute("credentials", new Credentials());
-        return "security/login";
+        return "user/login";
     }
 
     @PostMapping("/login")
@@ -47,6 +43,9 @@ public class UserController {
         UsernamePasswordAuthenticationToken authReq
                 = new UsernamePasswordAuthenticationToken(credentials.getUsername(), credentials.getPassword());
         Authentication auth = apiAuthenticationManager.authenticate(authReq);
+        if(auth == null) {
+            return "redirect:/login?errors";
+        }
         SecurityContext sc = SecurityContextHolder.getContext();
         sc.setAuthentication(auth);
         HttpSession session = req.getSession(true);
@@ -58,13 +57,13 @@ public class UserController {
     @GetMapping("/register/member")
     public String registerMember(Model model) {
         model.addAttribute("user", new User());
-        return "security/register";
+        return "user/register-member";
     }
 
     @GetMapping("/register/partner")
     public String registerPartner(Model model) {
         model.addAttribute("user", new User());
-        return "security/register-partner";
+        return "user/register-partner";
     }
 
     @PostMapping("/user/add/client")
@@ -82,21 +81,23 @@ public class UserController {
     }
 
     @PostMapping("/user/edit")
-    public String edit(@ModelAttribute("user") User user, Model model) throws  JsonProcessingException {
-        // TODO add security
+    public String edit(@ModelAttribute("user") User user, Model model) throws JsonProcessingException {
+        if(!isAuthenticated()) {
+            return "redirect:/login";
+        }
+        User authenticated = getUser();
+        user.setId(authenticated.getId());
+        user.setStatus(authenticated.getStatus());
         userApi.edit(user);
         return "redirect:/profile";
     }
 
     @GetMapping("/profile")
-    public String profile(Principal principal, Model model) {
-        SecurityContext context = SecurityContextHolder.getContext();
-        Authentication authentication = context.getAuthentication();
-        if(authentication.getPrincipal() == null) {
+    public String profile(Model model) {
+        if (!isAuthenticated()) {
             return "redirect:/login";
         }
-        User user = userApi.getByUsername(authentication.getPrincipal().toString());
-        model.addAttribute("user", user);
+        model.addAttribute("user", getUser());
         return "user/show";
     }
 }

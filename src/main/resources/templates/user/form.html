@@ -18,7 +18,11 @@
     </div>
     <div class="form-group">
         <label for="email">Adresse email</label>
-        <input type="email" class="form-control" id="email" required th:field="*{email}">
+        <input type="email" class="form-control" id="email" th:field="*{email}">
+    </div>
+    <div class="form-group">
+        <label for="password">Mot de passe pour valider</label>
+        <input type="password" class="form-control" id="password" required th:field="*{password}">
     </div>
     <button type="submit" class="btn btn-danger btn-block">Mettre à jour mes informations personnelles</button>
 </form>

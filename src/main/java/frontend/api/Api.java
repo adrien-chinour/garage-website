@@ -14,5 +14,5 @@ interface Api<T> {
 
     T edit(T entity) throws JsonProcessingException;
 
-    T delete(int id);
+    void delete(int id);
 }

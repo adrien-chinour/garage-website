@@ -5,7 +5,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import frontend.model.Garage;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 
@@ -27,7 +26,7 @@ public class GarageApi implements Api<Garage> {
 
     @Override
     public Garage[] get(@Nullable Map<String, String> filters) {
-        return mapper.convertValue(apiService.get(base, null), new TypeReference<Garage[]>() {
+        return mapper.convertValue(apiService.get(base, filters), new TypeReference<Garage[]>() {
         });
     }
 
@@ -52,7 +51,7 @@ public class GarageApi implements Api<Garage> {
     }
 
     @Override
-    public Garage delete(int id) {
-        return null;
+    public void delete(int id) {
+        apiService.delete(base + "/" + id);
     }
 }

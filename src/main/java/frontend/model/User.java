@@ -1,5 +1,7 @@
 package frontend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class User {
 
     private int id;
@@ -19,6 +21,13 @@ public class User {
     private String status;
 
     public User() {
+    }
+
+    @JsonIgnore
+    public String getFullname() {
+        return Character.toUpperCase(getFirst_name().charAt(0))
+                + getFirst_name().substring(1)
+                + " " + getName().toUpperCase();
     }
 
     public int getId() {

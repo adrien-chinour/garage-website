@@ -4,11 +4,9 @@ body{background-image: url(/img/background.jpg);
     opacity:0.98;
 }
 
-/*Card Garage*/
 .card {
-    margin-top:200px;
     left:10%;
-    position:absolute;
+    margin-top: 10px;
     width:80%;
     height:auto;
     background: rgba(255, 255, 255, 0.85)
