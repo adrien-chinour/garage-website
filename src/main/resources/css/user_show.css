@@ -3,6 +3,26 @@ body{background-image: url(/img/background.jpg);
     background-size: cover ;
     opacity:0.98;
 }
+<<<<<<< HEAD
+#global{
+    margin-top:200px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+.row{width: auto;
+flex-wrap: nowrap;}
+
+.card {
+    height:auto;
+    background: rgba(255, 255, 255, 0.85);
+}
+#card2 {width:60%; height:300px}
+#card3 {margin-left:-42%;height:300px;}
+
+
+.card-body {
+    width:100%;
+=======
 
 main {
     margin-top:200px;
@@ -15,18 +35,44 @@ main {
 
 #card-body1 {
     width:60%;
+>>>>>>> 6ddd4bacaf63004d9efe4f563007aa8d7bef049b
     display:block;
     height:auto;
     padding:0;
     padding-left:10px;
     padding-top:10px;
+    padding-right:10px;
 }
 #img_account {
     float:left;
 }
+<<<<<<< HEAD
+#img_account2 {
+    float:left;
+}
+.card-img-account2 {
+    width: 50px;
+    height:auto;
+}
+
+
+#img_account2 h6 {
+    float:right;
+}
+=======
+>>>>>>> 6ddd4bacaf63004d9efe4f563007aa8d7bef049b
 .card-img-account{
     width: 100px;
     height:auto;
-    margin:5;
 }
 .card-subtitle.mb-2.text-muted {font-weight: 200;}
+
+#col-auto{float:right;margin-top:-70px;}
+#col-auto button { background-color:#ED2D2A;border:none;}
+#number_moy_rating2 {
+    visibility: hidden;
+}
+.rating{  margin-top:10px;}
+.rating span { color: #ED2D2A;
+    font-size:23px;
+  }
