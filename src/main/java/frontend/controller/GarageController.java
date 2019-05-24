@@ -96,7 +96,7 @@ public class GarageController extends AbstractController {
         }
         User user = getUser();
         Map<String, String> filters = new HashMap<>();
-        filters.put("partner", user.getName());
+        filters.put("partner", String.valueOf(user.getId()));
         Garage[] garages = garageApi.get(filters);
         model.addAttribute("garages", garages);
         return "garage/manage";

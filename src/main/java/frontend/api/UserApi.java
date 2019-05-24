@@ -26,7 +26,7 @@ public class UserApi implements Api<User> {
     }
 
     @Override
-    public User[] get(@Nullable Map<String,String> filters) {
+    public User[] get(@Nullable Map<String, String> filters) {
         return mapper.convertValue(apiService.get(base, filters), new TypeReference<User[]>() {
         });
     }
@@ -42,8 +42,6 @@ public class UserApi implements Api<User> {
         params.put("username", username);
         User[] users = mapper.convertValue(apiService.get(base, params), new TypeReference<User[]>() {
         });
-        System.out.println("userapi = " + users.length);
-
         return users.length == 1 ? users[0] : null;
     }
 

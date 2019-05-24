@@ -88,6 +88,7 @@ public class UserController extends AbstractController {
         User authenticated = getUser();
         user.setId(authenticated.getId());
         user.setStatus(authenticated.getStatus());
+        user.setPassword(authenticated.getPassword());
         userApi.edit(user);
         return "redirect:/profile";
     }

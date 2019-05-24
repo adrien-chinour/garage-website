@@ -76,14 +76,17 @@
         </div>
         <div class="card" id="card4">
             <div class="card-body" id="card-body4">
-                <div class="card-body" id="title-comment">
-                    <h5 class="card-title" id="card-title2">Avis (<span th:text="${garage.getNumberComment()}"></span>)
+                <div id="title-comment">
+                    <h5 id="card-title2">
+                        Avis (<span th:text="${garage.getNumberComment()}"></span>)
                     </h5>
-                    <i class="fa fa-question-circle fa-2x"></i> <h6 class="card-subtitle mb-2 text-muted"
-                                                                    id="subtitle-comment"> Contrôle des avis</h6>
+                    <i class="fa fa-question-circle fa-2x"></i>
+                    <h6 class="card-subtitle mb-2 text-muted" id="subtitle-comment">
+                        Contrôle des avis
+                    </h6>
                 </div>
-                <div class="card-body" id="title-comment2">
-                    <h5 class="card-title" id="card-title4">Note attribuée</h5>
+                <div id="title-comment2">
+                    <h5 id="card-title4">Note attribuée</h5>
                     <div class="row" id="row_rating">
                         <div class="side">
                             <div class="side_div">Excellent</div>
@@ -143,7 +146,9 @@
                     </div>
                 </div>
             </div>
-            <div class="card-body" id="form-avis" >
+        </div>
+        <div class="card">
+            <div class="card-body" id="form-avis">
                 <h4>Écrire un commentaire :</h4>
                 <form sec:authorize="hasRole('ROLE_MEMBER')"
                       th:action="${'/garage/comment/'+garage.id}" th:object="${comment}" method="post">
@@ -167,23 +172,27 @@
                 <a th:href="@{/login}" sec:authorize="!isAuthenticated()" class="btn btn-danger btn-lg btn-block">
                     Authentifiez-vous pour pouvoir écrire un commentaire !
                 </a>
-            </div>
-            <div id="button_desc4" th:each="comment : ${garage.comments}">
-                <div class="rating" id="rating2">
-                    <h4 class="card-title" id="number_moy_rating2" th:text="${comment.note}"></h4>
-                    <span class="fa fa-circle-o" id="1"></span>
-                    <span class="fa fa-circle-o" id="2"></span>
-                    <span class="fa fa-circle-o" id="3"></span>
-                    <span class="fa fa-circle-o" id="4"></span>
-                    <span class="fa fa-circle-o" id="5"></span>
-                    <script>
-                        var MyH4 = document.getElementById("number_moy_rating2").innerHTML;
-                        for (var i = 1; i <= MyH4; i++) {
-                            document.getElementById(i.toString()).className = "fa fa-dot-circle-o";
-                        }
-                    </script>
-                    <h6 class="card-subtitle">Commentaire :</h6>
-                    <p th:text="${comment.comment}"></p>
+                <div th:each="comment : ${garage.comments}">
+                    <div class="rating" id="rating2">
+                        <span class="number_moy_rating2" th:id="${comment.id + '-note'}"
+                              th:text="${comment.note}"></span>
+                        <span class="fa fa-circle-o" th:id="${comment.id + '-note-1'}"></span>
+                        <span class="fa fa-circle-o" th:id="${comment.id + '-note-2'}"></span>
+                        <span class="fa fa-circle-o" th:id="${comment.id + '-note-3'}"></span>
+                        <span class="fa fa-circle-o" th:id="${comment.id + '-note-4'}"></span>
+                        <span class="fa fa-circle-o" th:id="${comment.id + '-note-5'}"></span>
+                        <script th:inline="javascript">
+                            /*<![CDATA[*/
+                            var id = /*[[${comment.id + '-note'}]]*/ 0;
+                            /*]]>*/
+                            var MyH4 = document.getElementById(id).innerHTML;
+                            for (var i = 1; i <= MyH4; i++) {
+                                document.getElementById(id + '-' + i).className = "fa fa-dot-circle-o";
+                            }
+                        </script>
+                        <h6 class="card-subtitle">Commentaire :</h6>
+                        <p th:text="${comment.comment}"></p>
+                    </div>
                 </div>
             </div>
         </div>

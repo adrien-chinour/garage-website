@@ -122,7 +122,6 @@ body {
 }
 
 .card {
-    height: 250px;
     background: rgba(255, 255, 255, 0.85);
 }
 
@@ -138,31 +137,6 @@ body {
     padding-left: 4px;
 }
 
-/* Notes */
-.rating {
-    float: left;
-}
-
-#rating1 {
-    position: absolute;
-}
-
-/*Animation rating
-#rating {
-    unicode-bidi: bidi-override;
-    direction: rtl;
-}
-#rating > span {
-    display: inline-block;
-    position: relative;
-}
-#rating > span:hover:before,
-#rating > span:hover ~ span:before {
-    content: "\f192";
-
-}
-/* */
-
 .rating span {
     color: #ED2D2A;
     font-size: 23px;
@@ -171,7 +145,6 @@ body {
 
 #link {
     position: relative;
-    margin-top: 70px;
     border-top: 1px solid;
     border-color: #ED2D2A;
     padding-top: 20px;
@@ -211,8 +184,8 @@ body {
 }
 
 #card4 {
-    margin-top: 10px;
-    height: 850px;
+    margin: 10px 0;
+    height: 350px;
 }
 
 #title-comment {
@@ -247,9 +220,7 @@ body {
 }
 
 #title-comment2 {
-    padding: 0;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding: 20px 0;
     position: absolute;
     border-bottom: 1px solid;
     border-color: #ED2D2A;
@@ -337,8 +308,13 @@ body {
     }
 }
 
-#number_moy_rating2 {
+.number_moy_rating2 {
     visibility: hidden;
+}
+
+.comments-card {
+    margin: 10px;
+    display: block;
 }
 
 #rating2 {
@@ -348,8 +324,4 @@ body {
 #number_total_rating2 {
     color: #ED2D2A;
     font-weight: 700;
-}
-
-#button_desc4 {
-    margin-top: 30px;
 }
