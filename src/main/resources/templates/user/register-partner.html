@@ -9,6 +9,9 @@
 
 <form id="form-signup" action="#" th:action="@{/user/add/partner}" th:object="${user}" method="post">
     <div class="container">
+        <div class="text-danger" th:if="${param.errors}">
+            Le nom d'utilisateur existe déjà merci d'en choisir un autre.
+        </div>
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">

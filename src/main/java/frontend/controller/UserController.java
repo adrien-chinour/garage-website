@@ -69,15 +69,23 @@ public class UserController extends AbstractController {
     @PostMapping("/user/add/client")
     public String createMember(@ModelAttribute("user") User user, Model model) throws JsonProcessingException {
         user.setStatus("client");
-        userApi.create(user);
-        return "redirect:/";
+        try {
+            userApi.create(user);
+        } catch (Exception e) {
+            return "redirect:/register/member?errors";
+        }
+        return "redirect:/login";
     }
 
     @PostMapping("/user/add/partner")
     public String createPartner(@ModelAttribute("user") User user, Model model) throws JsonProcessingException {
         user.setStatus("partner");
-        userApi.create(user);
-        return "redirect:/";
+        try {
+            userApi.create(user);
+        } catch (Exception e) {
+            return "redirect:/register/partner?errors";
+        }
+        return "redirect:/login";
     }
 
     @PostMapping("/user/edit")
