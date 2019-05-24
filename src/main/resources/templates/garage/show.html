@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="fr">
 
 <head th:replace="layout :: common_header(~{::title},~{::link})">
-    <title th:text="${garage.name}"></title>
+    <title>Garage Corner | <span th:text="${garage.name}" th:remove="tag"></span></title>
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/../css/garage_show.css}">
 </head>
 
