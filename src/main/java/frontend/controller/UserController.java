@@ -95,9 +95,14 @@ public class UserController extends AbstractController {
         }
         User authenticated = getUser();
         user.setId(authenticated.getId());
+        user.setUsername(authenticated.getUsername());
         user.setStatus(authenticated.getStatus());
         user.setPassword(authenticated.getPassword());
-        userApi.edit(user);
+        try {
+            userApi.edit(user);
+        } catch (Exception e) {
+            return "redirect:/profile?error";
+        }
         return "redirect:/profile";
     }
 
@@ -106,7 +111,7 @@ public class UserController extends AbstractController {
         if (!isAuthenticated()) {
             return "redirect:/login";
         }
-        model.addAttribute("user", getUser());
+        model.addAttribute("user", userApi.getByUsername(getUser().getUsername()));
         return "user/show";
     }
 }

@@ -110,7 +110,11 @@ public class GarageController extends AbstractController {
         comment.setClient_id(getUser().getId());
         Garage garage = garageApi.find(garageId);
         garage.getComments().add(comment);
-        garageApi.edit(garage);
+        try {
+            garageApi.edit(garage);
+        } catch (Exception e) {
+            return "redirect:/garage/" + garageId + "?comment";
+        }
         return "redirect:/garage/" + garageId;
     }
 

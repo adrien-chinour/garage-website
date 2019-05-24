@@ -16,9 +16,9 @@ body {
 }
 
 #form-signup {
+    margin-top: 200px;
     width: 100%;
     padding: 15px;
-    margin: auto;
 }
 
 #form-signup .container {

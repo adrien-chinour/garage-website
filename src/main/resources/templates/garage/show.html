@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="fr">
 
 <head th:replace="layout :: common_header(~{::title},~{::link})">
-    <title>Garage Corner | <span th:text="${garage.name}" th:remove="tag"></span></title>
+    <title>Garage Corner | Voir le garage</title>
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/../css/garage_show.css}">
 </head>
 
@@ -150,6 +150,9 @@
         <div class="card">
             <div class="card-body" id="form-avis">
                 <h4>Écrire un commentaire :</h4>
+                <div class="text-danger" th:if="${param.comment}">
+                    Le commentaire n'a pas pu être envoyé. Veuillez réessayer.
+                </div>
                 <form sec:authorize="hasRole('ROLE_MEMBER')"
                       th:action="${'/garage/comment/'+garage.id}" th:object="${comment}" method="post">
                     <div class="form-group">

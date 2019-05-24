@@ -50,6 +50,9 @@
             <div class="card">
                 <h3 class="card-title">Modification des informations personnelles</h3>
                 <div class="card-body">
+                    <div class="text-danger" th:if="${param.error}">
+                        Impossible de mettr à jour le profil avec ces données.
+                    </div>
                     <div th:replace="user/form (action='/user/edit')"></div>
                 </div>
             </div>
