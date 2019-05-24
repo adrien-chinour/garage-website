@@ -17,9 +17,17 @@ import java.util.Map;
 public class ApiService {
 
     private String url;
+    private String username;
+    private String password;
 
-    public ApiService(@Value("${api.baseUrl}") String url) {
+    public ApiService(
+            @Value("${api.baseUrl}") String url,
+            @Value("${api.username}") String username,
+            @Value("${api.password}") String password
+    ) {
         this.url = url;
+        this.username = username;
+        this.password = password;
     }
 
     List get(String endpoint, Map<String, String> params) {
@@ -68,13 +76,14 @@ public class ApiService {
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(this.url + endpoint);
         if (params != null) {
             for (Map.Entry<String, String> entry : params.entrySet()) {
-                builder.queryParam(entry.getKey(), entry.getValue());
+                builder.queryParam(entry.getKey(), entry.getValue().replace(' ', '+'));
             }
         }
 
         RestTemplate restTemplate = new RestTemplate();
+        System.out.println(builder.toUriString());
         restTemplate.getInterceptors().add(
-                new BasicAuthorizationInterceptor("Admin", "Admin"));
+                new BasicAuthorizationInterceptor(this.username, this.password));
         response = restTemplate.exchange(builder.toUriString(), method, entity, String.class);
         return response;
     }
